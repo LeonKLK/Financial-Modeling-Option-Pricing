@@ -42,8 +42,6 @@ int main(){
     FILE *exact_delta;
     FILE *gamma;
     FILE *exact_gamma;
-    //FILE *theta;
-    //FILE *exact_theta;
     
     option_price=fopen("C_price.csv", "w");
     exact_option_price=fopen("exact_sol.csv", "w");
@@ -125,11 +123,11 @@ int main(){
         fprintf(option_price,"%lf\t %lf\t %lf\n", SP_x[i], price_c[i], error_c[i]);   //We extract the option price within 3 sd of x
         fprintf(exact_option_price,"%lf\t %lf\n", SP_x[i], exact_c[i]);
         fprintf(payoff,"%lf\t %lf\n", SP_x[i], payoff_x[i]);
-            //printf("x=%lf S=%lf C=%lf exact_c=%lf error=%lf\n", x,SP_x[i], price_c[i], exact_c[i], error_c[i]);
+        //printf("x=%lf S=%lf C=%lf exact_c=%lf error=%lf\n", x,SP_x[i], price_c[i], exact_c[i], error_c[i]);
         exact_delta_c[i]= exact_delta_function(SP_x[i]);
         delta_c[i]=(price_c[i+1]-price_c[i-1])/(SP_x[i+1]-SP_x[i-1]);     //central difference with second order accuracy
         error_delta[i]=-(exact_delta_c[i]-delta_c[i])/exact_delta_c[i]*100;
-            //printf("S=%lf delta=%lf exact_delta=%lf error=%lf\n ",SP_x[i], delta_c[i], exact_delta_c[i], error_delta[i]);
+        //printf("S=%lf delta=%lf exact_delta=%lf error=%lf\n ",SP_x[i], delta_c[i], exact_delta_c[i], error_delta[i]);
         fprintf(delta,"%lf\t %lf\t %lf\n", SP_x[i], delta_c[i], error_delta[i]);
         fprintf(exact_delta, "%lf\t %lf\n", SP_x[i], exact_delta_c[i]);
         x= x+dx;
@@ -137,9 +135,7 @@ int main(){
     
     x=xmin;
     for (int i=0; i<=N; ++i) {
-        //gamma_c[i]=(price_c[i+1]-2*price_c[i]+price_c[i-1])/pow(SP_x[i+1]-SP_x[i], 2);      //order 2
         gamma_c[i]=(delta_c[i+1]-delta_c[i-1])/(SP_x[i+1]-SP_x[i-1]);
-        //gamma_c[i]=(-price_c[i+2]+16*price_c[i+1]-30*price_c[i]+16*price_c[i-1]-price_c[i-2])/(12*pow(SP_x[i+1]-SP_x[i], 2));       //order 4
         exact_gamma_c[i]=exact_gamma_function(SP_x[i]);
         error_gamma[i]=(gamma_c[i]-exact_gamma_c[i])/exact_gamma_c[i]*100;
         //printf("C=%lf S=%lf gamma=%lf exact_gamma=%lf error=%lf\n ",price_c[i], SP_x[i], gamma_c[i], exact_gamma_c[i], error_gamma[i]);
