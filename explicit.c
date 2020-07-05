@@ -64,6 +64,11 @@ int main(){
     a= -0.5*(k-1);
     b= -0.25*(k+1)*(k+1);
     
+    if (alpha > 0.5) {
+        printf("Alpha need to be <=0.5\n");
+        exit(1);
+    }
+    
     //interested range setting
     xmin=-5*sd;
     xmax=5*sd;
