@@ -77,10 +77,8 @@ int main(){
     double old_u[N+1], new_u[N+1];
     double inter_u[N+1];
     double price_c[N+1], SP_x[N+1], exact_c[N+1], error_c[N+1], payoff_x[N+1];
-    
     double delta_c[N+1], exact_delta_c[N+1], error_delta[N+1];
     double gamma_c[N+1], exact_gamma_c[N+1], error_gamma[N+1];
-    double theta_c[N+1], exact_theta_c[N+1], error_theta[N+1];
     
     //core code
     for (int i=0; i<=N; ++i) {      //putting initial condition
