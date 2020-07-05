@@ -59,21 +59,24 @@ int main(){
     T= 0.5;         //6 months but T is in the unit of years
     dx= 0.01;
     dt= 0.000051;
+    
     alpha= dt/(dx*dx);
     sd= sigma*sqrt(T);
-    x=-3;
-    xmin=-5*sd;
-    xmax=5*sd;
     k=r/(0.5*sigma*sigma);
     a= -0.5*(k-1);
     b= -0.25*(k+1)*(k+1);
     
-    printf("Alpha=%lf\n", alpha);
+    x=-3;
+    xmin=-5*sd;
+    xmax=5*sd;
+    
+    //printf("Alpha=%lf\n", alpha);
     
     N=fabs(x)/dx*2;
     M= 0.5*sigma*sigma*T/dt;
     printf("N=%d\n ", N);
     printf("M=%lf\n ", M);
+    
     double old_u[N+1], new_u[N+1];
     double inter_u[N+1];
     double price_c[N+1], SP_x[N+1], exact_c[N+1], error_c[N+1], payoff_x[N+1];
