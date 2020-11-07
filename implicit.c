@@ -70,6 +70,7 @@ int main() {
     double delta_c[N+1], exact_delta_c[N+1], error_delta[N+1];
     double gamma_c[N+1], exact_gamma_c[N+1], error_gamma[N+1];
     
+    //Note that for implicit method, alpha>0.5 makes the calculation become unstable.
     if (alpha > 0.5) {
         printf("Alpha need to be <=0.5\n");
         exit(1);
@@ -139,6 +140,7 @@ int main() {
         x=x+dx;
     }
     
+    //The following code of "fprint" corresponds for printing data file.
     x=xmin;
     for (int i=0; i<=N; ++i) {
         fprintf(option_price,"%lf\t %lf\t %lf\n", SP_x[i], price_c[i], error_c[i]);   //We extract the option price within 3 sd of x

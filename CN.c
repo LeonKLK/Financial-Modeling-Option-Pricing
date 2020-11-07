@@ -105,6 +105,7 @@ int main() {
     }
     u[0]= Nmin(xmin);
     u[N]= Nmax(xmax);
+    //initialization is done.
     
     for (int j=0; j<M-1 ; ++j) {
         x= xmin;
@@ -144,6 +145,7 @@ int main() {
         x= x+dx;
     }
     
+    //The following code of "fprint" corresponds for printing data file.
     x=xmin;
     for (int i=0; i<=N; ++i) {
         fprintf(option_price,"%lf\t %lf\t %lf\n", SP_x[i], price_c[i], error_c[i]);   //We extract the option price within 3 sd of x

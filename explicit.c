@@ -64,6 +64,7 @@ int main(){
     a= -0.5*(k-1);
     b= -0.25*(k+1)*(k+1);
     
+    //Note that for explicit method, alpha>0.5 makes the calculation become unstable.
     if (alpha > 0.5) {
         printf("Alpha need to be <=0.5\n");
         exit(1);
@@ -110,7 +111,6 @@ int main(){
         price_c[i]=OP(x, M*dt, old_u[i]);   //calculate option price c from u
         exact_c[i]=exact_price_function(SP_x[i]);
         error_c[i]=(price_c[i]-exact_c[i])/exact_c[i]*100;
-        inter_u[i]=OP(x, (M-1)*dt, inter_u[i]);     //calculate option price c from u at t=T-dt
         if (x>=0) {
             payoff_x[i]=SP_x[i]-E;
         } else {
@@ -121,6 +121,7 @@ int main(){
     }
     //whole calculation is done here.
     
+    //The following code of "fprint" corresponds for printing data file.
     x=xmin;
     for (int i=0; i<=N; ++i) {
         fprintf(option_price,"%lf\t %lf\t %lf\n", SP_x[i], price_c[i], error_c[i]);   //We extract the option price within 3 sd of x
