@@ -13,8 +13,10 @@ For the explicit, implicit and Crank Nicolson finite difference method, notice t
 For Monte Carlo method, this method is the most accurate but the most time consuming, thus one can always choose the desire range, for his best use of time. Notice that for the random number from a Guassian distribution, we use the Box-Muller method, different distributions could be applied if you have another models for stock prices.
 
 If you have any questions, welcome to contact me.
+
 Leon
 
 # Reference Book
 The Mathematics of Financial Derivatives: A Student Introduction
+
 Paul Wilmott
